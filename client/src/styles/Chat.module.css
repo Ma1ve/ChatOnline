@@ -81,7 +81,26 @@
   font-size: 18px;
   background: rgb(35, 35, 35);
   padding: 32px;
+  overflow-y: auto;
+  height: 100%;
 }
+
+.messages::-webkit-scrollbar {
+  width: 5px;
+}
+.messages::-webkit-scrollbar-track {
+  background-color: #232327;
+}
+.messages::-webkit-scrollbar-thumb {
+  background-color: #a3a3a3a3;
+  border-radius: 15px;
+}
+
+/* messages::-webkit-scrollbar-track
+      background-color: #232327
+    messages::-webkit-scrollbar-thumb
+      background-color: #a3a3a3a3
+      border-radius: 15px */
 
 .emoji {
   width: 40px;
