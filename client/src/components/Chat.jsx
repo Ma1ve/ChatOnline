@@ -7,11 +7,17 @@ import EmojiPicker from 'emoji-picker-react';
 
 import icon from '../images/emoji.svg';
 import styles from '../styles/Chat.module.css';
+
 import Messages from './Messages';
 
 const socket = io.connect('http://localhost:5000');
 
 const Chat = () => {
+  const x = {
+    g: 12,
+    d: 23,
+  };
+
   const navigate = useNavigate();
   const { search } = useLocation();
 
@@ -28,6 +34,7 @@ const Chat = () => {
   //? Открывает и закрывает EmojiPicker
 
   const [users, setUsers] = useState(0);
+
   //? Хранит в себе кол-во пользователей в комнате
 
   useEffect(() => {
