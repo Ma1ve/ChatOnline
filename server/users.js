@@ -1,6 +1,6 @@
 const { trimStr } = require('./utils');
 
-let users = [];
+let users = []; //? Хранит в себе {name: qq, room: qqwe}
 
 const findUser = (user) => {
   //? ({ name, room })
@@ -27,7 +27,7 @@ const removeUser = (user) => {
   const found = findUser(user);
 
   if (found) {
-    users = users.filter(({ name, room }) => room === found.room && name !== found.name);
+    users = users.filter(({ name, room }) => room === found.room && name !== found.name); //? Те в этой комнате && всех кроме нашего юзера, которого отправили.
   }
 
   return found;

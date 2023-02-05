@@ -32,12 +32,12 @@ io.on('connection', (socket) => {
       data: { user: { name: 'ADMIN' }, message: `${name} has joined` },
     });
 
-    io.to(user.room).emit('room', { data: { users: getRoomUsers(user.room) } });
+    io.to(user.room).emit('room', { data: { users: getRoomUsers(user.room) } }); //? user.room --> берем комнату последнего юзера, тк он последний зашёл в room, то от него будет отсчёт.
   });
 
   socket.on('sendMessage', ({ message, params }) => {
     //? params --> { name, room }
-    const user = findUser(params);
+    const user = findUser(params); //? Тут мы проверяем существует ли user, если да то возвращает тот же объект, только из массива users
 
     //console.log('params:', params); //? params { name: 'qq1', room: 'qq' }
     //console.log('user:', user); //? user { isExist: false, user: { name: 'qq1', room: 'qq' } }
@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
     const user = removeUser(params);
 
     if (user) {
-      const { room, name } = user;
+      const { room, name } = user; //? возвращаем user, которого удалили. Тоже самое, на подобии того, что я делал сверху
 
       io.to(room).emit('message', {
         data: { user: { name: 'ADMIN' }, message: `${name} has left` },
